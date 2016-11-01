@@ -1,0 +1,20 @@
+```{r, echo=FALSE, message=FALSE}
+library(plotly)
+names <- c("Jeff", "Lao", "Lee", "James", "Alex")
+math.grades <- c(100, 95, 70, 80, 66)
+spanish.grades <- c(72, 84, 77, 90, 88)
+grades <- data.frame(names, math.grades, spanish.grades)
+
+# Using plotly 
+chart <- plot_ly(grades, x =~spanish.grades, y = ~math.grades, type = 'scatter',         
+        mode = 'text', text = ~names, textposition = 'middle right',         
+        textfont = list(color = '#000000', size = 16)) %>%         
+        layout(title = 'Student Grades',              
+          xaxis = list(title = 'Spanish Grades',                           
+                      zeroline = TRUE,                           
+                      range = c(0, 120)),              
+          yaxis = list(title = 'Math Grades',                           
+                      range = c(0, 120)))
+```
+
+`r chart`
